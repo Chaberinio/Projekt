@@ -35,9 +35,15 @@
     <Content Include="package.json" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
+    <Content Include="views\addDev.pug" />
+    <Content Include="views\addGame.pug" />
+    <Content Include="views\addGenre.pug" />
     <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
     <Content Include="views\error.pug" />
+    <Content Include="views\showDevelopers.pug" />
+    <Content Include="views\showGames.pug" />
+    <Content Include="views\showGenre.pug" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\" />

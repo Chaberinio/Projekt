@@ -1,63 +1,22 @@
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(http-equiv='X-UA-Compatible' content='IE=edge')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  link(rel='stylesheet' href='style.css')
-  title Moja biblioteka
-  link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
-.main
-  nav
-    ul.menu
-      li
-        a.menuItem(href='index.html') Strona g&lstrok;&oacute;wna
-      li
-        a.menuItem(href='showGames.html') Wy&sacute;wietl gry
-      li
-        a.menuItem(href='showDev.html') Wy&sacute;wietl developer&oacute;w
-      li
-        a.menuItem(href='showGenre.html') Wy&sacute;wietl gatunki
-      li
-        a.menuItem(href='addGame.html') Dodaj gr&eogon;
-      li
-        a.menuItem(href='addDev.html') Dodaj developera
-      li
-        a.menuItem(href='addGenre.html') Dodaj gatunek
-    button.hamburger
-      i.menuIcon.material-icons menu
-      i.closeIcon.material-icons close
-    script.
-      const menu = document.querySelector(".menu");
-      const menuItems = document.querySelectorAll(".menuItem");
-      const hamburger= document.querySelector(".hamburger");
-      const closeIcon= document.querySelector(".closeIcon");
-      const menuIcon = document.querySelector(".menuIcon");
-      function toggleMenu() {
-      if (menu.classList.contains("showMenu")) {
-      menu.classList.remove("showMenu");
-      closeIcon.style.display = "none";
-      menuIcon.style.display = "block";
-      menu.style.background = "rgba(0,0,0,0.7)";
-      } else {
-      menu.classList.add("showMenu");
-      closeIcon.style.display = "block";
-      menuIcon.style.display = "none";
-      menu.style.background = "rgba(0,0,0,0.7)";
-      }
-      }
-      hamburger.addEventListener("click", toggleMenu);
-      menuItems.forEach(
-      function(menuItem) {
-      menuItem.addEventListener("click", toggleMenu);
-      }
-      )
-  .banner
-    h1 Witaj w mojej bibliotece
-  .container
-    form(action='http://localhost:3000/addDev' method='GET')
-      h1 Dodaj developera
-      |                 Nazwa: 
-      input(type='text' name='name')
-      input(type='submit' value='Wyœlij')
-  .footer
-    p Created by Jakub Chabrowski, Dawid Wo&zacute;niak &copy;
+extends layout
+
+block content
+    doctype html
+    head
+      meta(charset='UTF-8')
+      meta(http-equiv='X-UA-Compatible' content='IE=edge')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      link(rel='stylesheet' href='/stylesheets/main.css')
+      title Moja biblioteka
+      link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
+    .main
+      .banner
+        h1 Witaj w mojej bibliotece
+      .container
+        form(action='http://localhost:3000/addDev' method='GET')
+          h1 Dodaj developera
+          |                 Nazwa: 
+          input(type='text' name='name')
+          input(type='submit' value='Wyœlij')
+      .footer
+        p Created by Jakub Chabrowski, Dawid Wo&zacute;niak &copy;

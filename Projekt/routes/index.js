@@ -27,28 +27,67 @@ router.get('/', function (req, res) {
 
 
 router.get('/showGames', (req, res) => {
-    res.render('showGames', { title: "Lista gier" });
+    var sql = `SELECT games.Id AS Id, games.Name AS Name, developers.Name AS Dev, genres.Name AS Genre, games.Photo_URL AS Photo_URL, games.ReleaseDate AS Release_Date, games.Description AS Description
+                FROM games 
+                    LEFT JOIN developers ON games.Developer_Id = developers.Id
+                    LEFT JOIN genres ON games.Genre_Id = genres.Id;`;
+
+    db.query(sql, function (err, result) {
+        if (err) throw err;
+
+        var games = result;
+        console.log(games);
+
+        res.render('showGames', { games: games });
+    });
 });
 
 router.get('/showDev', (req, res) => {
-    res.render('showDevelopers', { title: "Lista deweloperów" });
+    var sql = `SELECT * from developers`;
+    
+    db.query(sql, function (err, result) {
+        if (err) throw err;
+        
+        var devs = result;
+        console.log(devs); 
+        
+       res.render('showDevelopers', {devs: devs});
+    });
+
 });
 
 router.get('/showGenre', (req, res) => {
-    res.render('showGenre', { title: "Lista gatunków" });
+    var sql = `SELECT * from genres`;
+
+    db.query(sql, function (err, result) {
+        if (err) throw err;
+
+        var genres = result;
+        console.log(genres);
+
+        res.render('showGenre', { genres: genres });
+    });
 });
 
 router.get('/addGame', (req, res) => {
 
-    //var devSql = `SELECT name FROM developers`;
-    //var devNames = "";
-    //db.query(devSql, function (err, result) {
-    //    if (err) throw err;
-    //    console.log('developers loaded' + result);
-    //    devNames = result;
-    //});
+    var devSql = `SELECT * from developers`;
+    var genreSql = `SELECT * FROM genres`;
     
-    res.render('addGame', { title: "Dodaj grê");    
+    db.query(devSql, function (err, resultDev) {
+        if (err) throw err;    
+        var devNames = resultDev;
+        console.log(devNames);
+        
+        db.query(genreSql, function (err, resultGenre) {
+            if (err) throw err;
+            var genreNames = resultGenre;
+            console.log(genreNames);
+            res.render('addGame', { devNames: devNames, genreNames: genreNames });    
+        });
+    });
+
+    
 });
 
 router.get('/addDev', (req, res) => {
@@ -85,11 +124,10 @@ router.post('/addGenre', function (req, res) {
 
 });
 
-router.post('/addGame', function (req, res, next) {
+router.post('/addGame', function (req, res) {
 
-    var name = req.body.name;
-    if (name != "") {
-        var sql = `INSERT INTO developers SET name = '${name}'`;
+    if (req.body.name != "" ) {
+        var sql = `INSERT INTO games SET Name = '${req.body.name}', Developer_Id = '${req.body.dev}', Genre_Id = '${req.body.genre}', Photo_URL = '${req.body.url}', ReleaseDate = '${req.body.date}', Description = '${req.body.description}'`;
         db.query(sql, function (err, result) {
             if (err) throw err;
             console.log('record inserted');
@@ -97,6 +135,8 @@ router.post('/addGame', function (req, res, next) {
         });
     }
     else res.render('empty');
+
 });
+
 
 module.exports = router;

@@ -6,5 +6,12 @@ block content
       .banner
         h1 Witaj w mojej bibliotece
       .container
+          table
+            each dev in devs
+              tr
+                td= dev.Id
+                td= dev.Name
+                  
+
       .footer
         p Stworzone przez Jakub Chabrowski, Dawid Wo&zacute;niak &copy;

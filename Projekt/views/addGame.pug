@@ -1,30 +1,51 @@
 extends layout
 
-block content
+block content   
     doctype html      
     .main
       .banner
         h1 Witaj w mojej bibliotece
       .container
-        //
-          <script>
-          $.get('addGame/'+this.value,function(data){
-          for(var j = 0; j < length; j++)
-          {
-          $('#genre').contents().remove();
-          var newOption = $('<option/>');
-          newOption.attr('text', data[j].text);
-          newOption.attr('value', data[j].value);
-          $('#skill').append(newOption);
-          }
-          });
-          </script>
+
         form(action='addGame' method='POST')
-          h1  Dodaj gr&eogon
-          |                 Nazwa: 
-          input(type='text' name='name')
-          |                 Gatunek:
-          select#genre
-          input(type='submit' value='Wy\u015Blij')
+            h1  Dodaj gr&eogon;
+            table
+                tr
+                    td
+                        |       Nazwa: 
+                    td
+                        input(type='text' name='name')
+                tr
+                    td
+                        |       Developer:
+                    td
+                        select(name = 'dev')
+                            each devName in devNames
+                                option(value= devName.Id)= devName.Name
+                tr
+                    td
+                        |       Gatunek: 
+                    td
+                        select(name = 'genre')
+                            each genreName in genreNames
+                                option(value= genreName.Id)= genreName.Name
+                tr
+                    td
+                        |       Data wydania:
+                    td
+                        input(type='date' name='date')
+                tr
+                    td
+                        |       Opis:
+                    td
+                        input(type='text' name='description')
+                tr
+                    td
+                        |       Url do zdjecia:
+                    td
+                        input(type='text' name='url')
+                tr
+                    td
+                        input(type='submit' value='Wy\u015Blij')
       .footer
         p Stworzone przez Jakub Chabrowski, Dawid Wo&zacute;niak &copy;

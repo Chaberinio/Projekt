@@ -6,6 +6,14 @@ block content
       .banner
         h1 Witaj w mojej bibliotece
       .container
+        table
+            each game in games
+                tr
+                    td= game.Id
+                    td= game.Name
+                    td= game.Dev
+                    td= game.Genre
+
       .footer
         p Created by Jakub Chabrowski, Dawid Wo&zacute;niak &copy;
 

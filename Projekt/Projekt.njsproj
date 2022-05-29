@@ -30,6 +30,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="public\images\ac2.jpg" />
     <Content Include="routes\index.js" />
     <Content Include="routes\users.js" />
     <Content Include="package.json" />
@@ -38,12 +39,18 @@
     <Content Include="views\addDev.pug" />
     <Content Include="views\addGame.pug" />
     <Content Include="views\addGenre.pug" />
+    <Content Include="views\empty.pug">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
     <Content Include="views\error.pug" />
     <Content Include="views\showDevelopers.pug" />
     <Content Include="views\showGames.pug" />
     <Content Include="views\showGenre.pug" />
+    <Content Include="views\success.pug">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\" />

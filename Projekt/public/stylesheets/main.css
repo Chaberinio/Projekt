@@ -12,7 +12,7 @@ body {
     margin: 0;
     padding: 0;
     /* background: url("http://localhost:3000/ac2.jpg") no-repeat; */
-    background: url("ac2.jpg") no-repeat;
+    background: url("/images/ac2.jpg") no-repeat;
     background-size: 100%;
 }
 

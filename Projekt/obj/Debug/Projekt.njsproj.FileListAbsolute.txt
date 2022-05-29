@@ -1,3 +1,6 @@
 D:\Projects\Projekt\Projekt\obj\Debug\Projekt.njsproj.AssemblyReference.cache
 D:\Projects\Projekt\Projekt\obj\Debug\Projekt.njsproj.CoreCompileInputs.cache
 D:\Projects\Projekt\Projekt\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\chabe\OneDrive\Pulpit\ProjektAW\Projekt\Projekt\obj\Debug\Projekt.njsproj.AssemblyReference.cache
+C:\Users\chabe\OneDrive\Pulpit\ProjektAW\Projekt\Projekt\obj\Debug\Projekt.njsproj.CoreCompileInputs.cache
+C:\Users\chabe\OneDrive\Pulpit\ProjektAW\Projekt\Projekt\bin\Microsoft.NodejsTools.WebRole.dll

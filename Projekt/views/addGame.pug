@@ -1,15 +1,7 @@
 extends layout
 
 block content
-    doctype html
-    head
-      meta(charset='UTF-8')
-      meta(http-equiv='X-UA-Compatible' content='IE=edge')
-      meta(name='viewport' content='width=device-width, initial-scale=1.0')
-      link(rel='stylesheet' href='/stylesheets/main.css')
-      title Moja biblioteka
-      link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
-      script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js')
+    doctype html      
     .main
       .banner
         h1 Witaj w mojej bibliotece
@@ -27,12 +19,12 @@ block content
           }
           });
           </script>
-        form(action='http://localhost:3000/addGame' method='GET')
-          h1 Dodaj gr&eogon;
+        form(action='addGame' method='POST')
+          h1  Dodaj gr&eogon
           |                 Nazwa: 
           input(type='text' name='name')
           |                 Gatunek:
           select#genre
-          input(type='submit' value='Wyœlij')
+          input(type='submit' value='Wy\u015Blij')
       .footer
-        p Created by Jakub Chabrowski, Dawid Wo&zacute;niak &copy;
+        p Stworzone przez Jakub Chabrowski, Dawid Wo&zacute;niak &copy;

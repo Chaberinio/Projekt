@@ -12,6 +12,8 @@ var users = require('./routes/users');
 
 var app = express();
 
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -26,6 +28,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+app.get('/addDev', function (req, res) {
+    let sql = `INSERT INTO developers SET Name = '${req.query.name}' `;
+    let query = db.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+    });
+
+});
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -57,6 +69,7 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
+
 
 app.set('port', process.env.PORT || 3000);
 

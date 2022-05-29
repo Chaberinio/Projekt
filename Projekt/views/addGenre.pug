@@ -2,21 +2,14 @@ extends layout
 
 block content
     doctype html
-    head
-      meta(charset='UTF-8')
-      meta(http-equiv='X-UA-Compatible' content='IE=edge')
-      meta(name='viewport' content='width=device-width, initial-scale=1.0')
-      link(rel='stylesheet' href='/stylesheets/main.css')
-      title Moja biblioteka
-      link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
     .main
       .banner
         h1 Witaj w mojej bibliotece
       .container
-        form(action='http://localhost:3000/addGenre' method='GET')
+        form(action='addGenre' method='POST')
           h1 Dodaj gatunek
           |                 Nazwa: 
           input(type='text' name='name')
-          input(type='submit' value='Wyœlij')
+          input(type='submit' value= "Wy\u015Blij")
       .footer
-        p Created by Jakub Chabrowski, Dawid Wo&zacute;niak &copy;
+        p Stworzone przez Jakub Chabrowski, Dawid Wo&zacute;niak &copy;

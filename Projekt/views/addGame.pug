@@ -9,43 +9,43 @@ block content
 
         form(action='addGame' method='POST')
             h1  Dodaj gr&eogon;
-            table
+            table.addGameTable
                 tr
                     td
                         |       Nazwa: 
                     td
-                        input(type='text' name='name')
+                        input.gameInput(type='text' name='name')
                 tr
                     td
                         |       Developer:
                     td
-                        select(name = 'dev')
+                        select.gameInput(name = 'dev')
                             each devName in devNames
                                 option(value= devName.Id)= devName.Name
                 tr
                     td
                         |       Gatunek: 
                     td
-                        select(name = 'genre')
+                        select.gameInput(name = 'genre')
                             each genreName in genreNames
                                 option(value= genreName.Id)= genreName.Name
                 tr
                     td
                         |       Data wydania:
                     td
-                        input(type='date' name='date')
+                        input.gameInput(type='date' name='date')
                 tr
                     td
                         |       Opis:
                     td
-                        input(type='text' name='description')
+                        input.gameInput(type='text' name='description')
                 tr
                     td
                         |       Url do zdjecia:
                     td
-                        input(type='text' name='url')
+                        input.gameInput(type='text' name='url')
                 tr
-                    td
-                        input(type='submit' value='Wy\u015Blij')
+                    td(colspan = 2)
+                        input.GameSubmit(type='submit' value='Wy\u015Blij')
       .footer
         p Stworzone przez Jakub Chabrowski, Dawid Wo&zacute;niak &copy;

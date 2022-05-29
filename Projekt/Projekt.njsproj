@@ -46,6 +46,9 @@
     <Content Include="views\layout.pug" />
     <Content Include="views\error.pug" />
     <Content Include="views\showDevelopers.pug" />
+    <Content Include="views\showGameDetails.pug">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\showGames.pug" />
     <Content Include="views\showGenre.pug" />
     <Content Include="views\success.pug">

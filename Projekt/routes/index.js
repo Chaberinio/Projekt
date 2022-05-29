@@ -98,6 +98,23 @@ router.get('/addGenre', (req, res) => {
     res.render('addGenre', { title: "Dodaj gatunek" });
 });
 
+router.get('/gameDetails', (req, res) => {
+
+    var id = 1;
+
+    var sql = `SELECT * FROM games WHERE Id LIKE '${id}'`;
+
+    db.query(sql, function (err, result) {
+        if (err) throw err;
+        var gameDetails = result;
+        console.log(gameDetails);        
+        res.render('gameDetails', { gameDetails: gameDetails });
+
+    });
+
+
+});
+
 router.post('/addDev', function (req, res, next) {
     var name = req.body.name;
     if (name != "") {

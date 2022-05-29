@@ -6,11 +6,17 @@ block content
       .banner
         h1 Witaj w mojej bibliotece
       .container
-          table
+          table.devTable
+            tr
+              td.devTableHeader
+                | Id
+              td.devTableHeader
+                | Nazwa
+
             each dev in devs
               tr
-                td= dev.Id
-                td= dev.Name
+                td.gameTableItem= dev.Id
+                td.gameTableItem= dev.Name
                   
 
       .footer

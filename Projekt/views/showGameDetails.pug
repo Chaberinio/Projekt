@@ -1,12 +1,11 @@
 extends layout
-
 block content
     doctype html
     .main
       .banner
         h1 Witaj w mojej bibliotece
       .container
-        table.gameTable
+        table.gameDetailsTable
             tr
               td.gameTableHeader
                 | Id
@@ -16,6 +15,10 @@ block content
                 | Developer
               td.gameTableHeader
                 | Gatunek
+              td.gameTableHeader
+                | Data wydania
+              td.gameTableHeader
+                | Opis
                 
             each game in games
                 tr
@@ -23,7 +26,5 @@ block content
                     td.gameTableItem= game.Name
                     td.gameTableItem= game.Dev
                     td.gameTableItem= game.Genre
-
       .footer
-        p Created by Jakub Chabrowski, Dawid Wo&zacute;niak &copy;
-
+        p Stworzone przez Jakub Chabrowski, Dawid Wo&zacute;niak &copy;

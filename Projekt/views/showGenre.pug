@@ -6,10 +6,16 @@ block content
       .banner
         h1 Witaj w mojej bibliotece
       .container
-        table
+        table.genreTable
+            tr
+              td.genreTableHeader
+                | Id
+              td.genreTableHeader
+                | Nazwa
+                
             each genre in genres
               tr
-                td= genre.Id
-                td= genre.Name
+                td.genreTableItem= genre.Id
+                td.genreTableItem= genre.Name
       .footer
         p Stworzone przez Jakub Chabrowski, Dawid Wo&zacute;niak &copy;

@@ -6,24 +6,75 @@ block content
       .banner
         h1 Witaj w mojej bibliotece
       .container
+        form
+            label(for = "name") Nazwa
+            input.nameFilter(type="text" name="name")
+            label(for = "dev") Developer
+            select.devFilter(name = 'dev')
+                option(value= "")
+                each game in games
+                    option(value= game.Dev)= game.Dev
+            label(for = "genre") Rodzaj                    
+            select.genreFilter(name = 'genre')
+                option(value= "")
+                each game in games
+                    option(value= game.Genre)= game.Genre
+
+        
+        
         table.gameTable
             tr
               th.gameTableHeader
-                | Id
+                | Obraz
               th.gameTableHeader
                 | Nazwa
               th.gameTableHeader
                 | Developer
               th.gameTableHeader
                 | Gatunek
-                
-            each game in games
+              each game in games
                 tr
-                    td.gameTableItem= game.Id
+                    td.gameTableItem
+                        img.gameImg(src= "/images/" + game.Photo_URL)
                     td.gameTableItem= game.Name
                     td.gameTableItem= game.Dev
                     td.gameTableItem= game.Genre
+                        
+            script.
+                const devFilter = document.querySelector(".devFilter");
+                const genreFilter = document.querySelector(".genreFilter");
+                const nameFilter = document.querySelector(".nameFilter");
+                const gameTable = document.querySelector(".gameTable");
+                const gamesArr = gameTable.rows;
 
+                function filter() 
+                {
+                    console.log(nameFilter.value);
+                    console.log(devFilter.value);
+                    console.log(genreFilter.value);
+                    console.log(gameTable.rows.length);
+                    
+                    gameTable.InnerHTML = "";
+                    for(let i = 0; i < gamesArr.length; i++) {
+                        img = gamesArr[i].cells[0].innerHTML;
+                        name = gamesArr[i].cells[1].innerHTML;
+                        dev = gamesArr[i].cells[2].innerHTML;
+                        genre = gamesArr[i].cells[3].innerHTML;
+
+                        if(name == "Nazwa" || ( name.includes(nameFilter.value) && dev.includes(devFilter.value) && genre.includes(genreFilter.value) )) {
+                            gameTable.InnerHTML += "<tr><td>" + img + "</td><td>" + name + "</td><td>" + dev + "</td><td>" + genre + "</td><>" ;
+                            
+                        }
+                            
+                    }
+                   console.log(gameTable.rows)
+
+                }
+
+                devFilter.addEventListener("change", filter);
+                genreFilter.addEventListener("change", filter);
+                nameFilter.addEventListener("change", filter);      
+            
       .footer
         p Created by Jakub Chabrowski, Dawid Wo&zacute;niak &copy;
 

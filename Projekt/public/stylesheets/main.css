@@ -80,10 +80,10 @@ body {
     transition: transform .3s;
 }
 
-    .menuItem:hover {
-        transform: scale(1.15) translate(4px, 4px);
-        box-shadow: 0 0 50px 15px rgba(0,0,0,.5);
-    }
+.menuItem:hover {
+    transform: scale(1.15) translate(4px, 4px);
+    box-shadow: 0 0 50px 15px rgba(0,0,0,.5);
+}
 
 .hamburger {
     position: fixed;

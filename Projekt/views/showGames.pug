@@ -6,7 +6,7 @@ block content
       .banner
         h1 Witaj w mojej bibliotece
       .container
-        form
+        div
             label(for = "name") Nazwa
             input.nameFilter(type="text" name="name")
             label(for = "dev") Developer
@@ -22,7 +22,7 @@ block content
 
         
         
-        table.gameTable
+        table.gameTable(onload= "createGamesArr()")
             tr
               th.gameTableHeader
                 | Obraz
@@ -40,40 +40,47 @@ block content
                     td.gameTableItem= game.Dev
                     td.gameTableItem= game.Genre
                         
-            script.
-                const devFilter = document.querySelector(".devFilter");
-                const genreFilter = document.querySelector(".genreFilter");
-                const nameFilter = document.querySelector(".nameFilter");
-                const gameTable = document.querySelector(".gameTable");
-                const gamesArr = gameTable.rows;
+        script.
+            const devFilter = document.querySelector(".devFilter");
+            const genreFilter = document.querySelector(".genreFilter");
+            const nameFilter = document.querySelector(".nameFilter");
+            const gamesArr = document.querySelector(".gameTable").rows;
 
-                function filter() 
-                {
-                    console.log(nameFilter.value);
-                    console.log(devFilter.value);
-                    console.log(genreFilter.value);
-                    console.log(gameTable.rows.length);
+
+            function filter() 
+            {
+                let gameTable = document.querySelector(".gameTable");
+                console.log(nameFilter.value);
+                console.log(devFilter.value);
+                console.log(genreFilter.value);
+                console.log(gameTable.rows);
                     
-                    gameTable.InnerHTML = "";
-                    for(let i = 0; i < gamesArr.length; i++) {
-                        img = gamesArr[i].cells[0].innerHTML;
-                        name = gamesArr[i].cells[1].innerHTML;
-                        dev = gamesArr[i].cells[2].innerHTML;
-                        genre = gamesArr[i].cells[3].innerHTML;
+                newGameTable = "";
+                for(let i = 0; i < gamesArr.length; i++) {
+                    img = gamesArr[i].cells[0].innerHTML;
+                    name = gamesArr[i].cells[1].innerHTML;
+                    dev = gamesArr[i].cells[2].innerHTML;
+                    genre = gamesArr[i].cells[3].innerHTML;
 
-                        if(name == "Nazwa" || ( name.includes(nameFilter.value) && dev.includes(devFilter.value) && genre.includes(genreFilter.value) )) {
-                            gameTable.InnerHTML += "<tr><td>" + img + "</td><td>" + name + "</td><td>" + dev + "</td><td>" + genre + "</td><>" ;
-                            
-                        }
+                    if(name == "Nazwa" || ( name.toLowerCase().includes(nameFilter.value.toLowerCase()) && dev.toLowerCase().includes(devFilter.value.toLowerCase()) && genre.toLowerCase().includes(genreFilter.value.toLowerCase()) )) {
+                        newGameTable += "<tr><td>" + img + "</td><td>" + name + "</td><td>" + dev + "</td><td>" + genre + "</td></tr>" ;
                             
                     }
-                   console.log(gameTable.rows)
+                    else {
+                        newGameTable += '<tr style="display: none;"><td>' + img + "</td><td>" + name + "</td><td>" + dev + "</td><td>" + genre + "</td></tr>" ;
+                    }
 
+                            
                 }
+                console.log(gameTable.rows)
 
-                devFilter.addEventListener("change", filter);
-                genreFilter.addEventListener("change", filter);
-                nameFilter.addEventListener("change", filter);      
+                gameTable.innerHTML = newGameTable;
+
+            }
+
+            devFilter.addEventListener("change", filter);
+            genreFilter.addEventListener("change", filter);
+            nameFilter.addEventListener("change", filter);      
             
       .footer
         p Created by Jakub Chabrowski, Dawid Wo&zacute;niak &copy;

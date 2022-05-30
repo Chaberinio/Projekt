@@ -63,8 +63,11 @@ block content
                     genre = gamesArr[i].cells[3].innerHTML;
 
                     if(name == "Nazwa" || ( name.toLowerCase().includes(nameFilter.value.toLowerCase()) && dev.toLowerCase().includes(devFilter.value.toLowerCase()) && genre.toLowerCase().includes(genreFilter.value.toLowerCase()) )) {
-                        newGameTable += "<tr><td>" + img + "</td><td>" + name + "</td><td>" + dev + "</td><td>" + genre + "</td></tr>" ;
-                            
+                        if(name == "Nazwa")
+                            newGameTable += '<tr><th class="gameTableHeader">' + img + '</th><th class="gameTableHeader">' + name + '</th><th class="gameTableHeader">' + dev + '</th><th class="gameTableHeader">' + genre + '</th></tr>' ;
+                        else
+                            newGameTable += '<tr><td class="gameTableItem">' + img + '</td><td class="gameTableItem">' + name + '</td><td class="gameTableItem">' + dev + '</td><td class="gameTableItem">' + genre + '</td></tr>' ;
+                        
                     }
                     else {
                         newGameTable += '<tr style="display: none;"><td>' + img + "</td><td>" + name + "</td><td>" + dev + "</td><td>" + genre + "</td></tr>" ;

@@ -203,6 +203,7 @@ body {
     /*    border: solid .8rem white;
     border-collapse: collapse;*/
     padding: 2rem;
+    width: 100%;
 }
 
 .gameTableHeader {

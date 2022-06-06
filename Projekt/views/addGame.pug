@@ -1,7 +1,18 @@
 extends layout
 
 block content   
-    doctype html      
+    doctype html
+    head 
+        style.
+            .container {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: safe center;
+                align-content: safe center;
+             }
+            
     .main
       .banner
         h1 Witaj w mojej bibliotece
@@ -36,14 +47,14 @@ block content
                         input.gameInput(type='date' name='date')
                 tr
                     td
-                        |       Opis:
-                    td
-                        input.gameInput(type='text' name='description')
-                tr
-                    td
                         |       Url do zdjecia:
                     td
                         input.gameInput(type='text' name='url')
+                tr
+                    td
+                        |       Opis:
+                    td
+                        textarea(cols="20" rows="6" name='description')
                 tr
                     td(colspan = 2)
                         input.GameSubmit(type='submit' value='Wy\u015Blij')

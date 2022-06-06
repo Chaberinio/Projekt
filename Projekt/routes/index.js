@@ -98,22 +98,27 @@ router.get('/addGenre', (req, res) => {
     res.render('addGenre', { title: "Dodaj gatunek" });
 });
 
-router.get('/gameDetails', (req, res) => {
+router.get('/showGameDetails', (req, res) => {
 
-    var id = 1;
+    var id = req.query.Id;
 
-    var sql = `SELECT * FROM games WHERE Id LIKE '${id}'`;
+    var sql = `SELECT games.Id AS Id, games.Name AS Name, developers.Name AS Dev, genres.Name AS Genre, games.Photo_URL AS Photo_URL, games.ReleaseDate AS Release_Date, games.Description AS Description
+                FROM games 
+                    LEFT JOIN developers ON games.Developer_Id = developers.Id
+                    LEFT JOIN genres ON games.Genre_Id = genres.Id
+                    WHERE games.Id LIKE ${id}`;
 
     db.query(sql, function (err, result) {
         if (err) throw err;
-        var gameDetails = result;
-        console.log(gameDetails);        
-        res.render('gameDetails', { gameDetails: gameDetails });
+        var games = result;
+        console.log(games);        
+        res.render('showGameDetails', { games: games });
 
     });
 
 
 });
+
 
 router.post('/addDev', function (req, res, next) {
     var name = req.body.name;

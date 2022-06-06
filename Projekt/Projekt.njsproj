@@ -31,7 +31,11 @@
   <ItemGroup>
     <Content Include="app.js" />
     <Content Include="public\images\ac2.jpg" />
+    <Content Include="public\images\battlefield.jpg" />
     <Content Include="public\images\csgo.jpg" />
+    <Content Include="public\images\main.jpg" />
+    <Content Include="public\images\metro.jpg" />
+    <Content Include="public\images\trackmania.jpg" />
     <Content Include="routes\index.js" />
     <Content Include="routes\users.js" />
     <Content Include="package.json" />

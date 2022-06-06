@@ -24,6 +24,8 @@ block content
         
         table.gameTable(onload= "createGamesArr()")
             tr
+              th.gameTableHeader(style= "display: none;")
+                | Id
               th.gameTableHeader
                 | Obraz
               th.gameTableHeader
@@ -34,8 +36,10 @@ block content
                 | Gatunek
               each game in games
                 tr
+                    td.gameTableItem(style= "display: none;")= game.Id
                     td.gameTableItem
-                        img.gameImg(src= "/images/" + game.Photo_URL)
+                        a(href= "/showGameDetails?Id=" + game.Id)
+                            img.gameImg(src= "/images/" + game.Photo_URL)
                     td.gameTableItem= game.Name
                     td.gameTableItem= game.Dev
                     td.gameTableItem= game.Genre
@@ -57,20 +61,22 @@ block content
                     
                 newGameTable = "";
                 for(let i = 0; i < gamesArr.length; i++) {
-                    img = gamesArr[i].cells[0].innerHTML;
-                    name = gamesArr[i].cells[1].innerHTML;
-                    dev = gamesArr[i].cells[2].innerHTML;
-                    genre = gamesArr[i].cells[3].innerHTML;
+
+                    id = gamesArr[i].cells[0].innerHTML;
+                    img = gamesArr[i].cells[1].innerHTML;
+                    name = gamesArr[i].cells[2].innerHTML;
+                    dev = gamesArr[i].cells[3].innerHTML;
+                    genre = gamesArr[i].cells[4].innerHTML;
 
                     if(name == "Nazwa" || ( name.toLowerCase().includes(nameFilter.value.toLowerCase()) && dev.toLowerCase().includes(devFilter.value.toLowerCase()) && genre.toLowerCase().includes(genreFilter.value.toLowerCase()) )) {
                         if(name == "Nazwa")
-                            newGameTable += '<tr><th class="gameTableHeader">' + img + '</th><th class="gameTableHeader">' + name + '</th><th class="gameTableHeader">' + dev + '</th><th class="gameTableHeader">' + genre + '</th></tr>' ;
+                            newGameTable += '<tr><th class="gameTableHeader" style="display: none;">' + id + '</th><th class="gameTableHeader">' + img + '</th><th class="gameTableHeader">' + name + '</th><th class="gameTableHeader">' + dev + '</th><th class="gameTableHeader">' + genre + '</th></tr>' ;
                         else
-                            newGameTable += '<tr><td class="gameTableItem">' + img + '</td><td class="gameTableItem">' + name + '</td><td class="gameTableItem">' + dev + '</td><td class="gameTableItem">' + genre + '</td></tr>' ;
+                            newGameTable += '<tr><td class="gameTableItem" style="display: none;">' + id + '</td><td class="gameTableItem"><a href="/showGameDetails?Id=${id}">' + img + '</a></td><td class="gameTableItem">' + name + '</td><td class="gameTableItem">' + dev + '</td><td class="gameTableItem">' + genre + '</td></tr>' ;
                         
                     }
                     else {
-                        newGameTable += '<tr style="display: none;"><td>' + img + "</td><td>" + name + "</td><td>" + dev + "</td><td>" + genre + "</td></tr>" ;
+                        newGameTable += '<tr style="display: none;"><td>' + id + '</td><td>' + img + "</td><td>" + name + "</td><td>" + dev + "</td><td>" + genre + "</td></tr>" ;
                     }
 
                             
